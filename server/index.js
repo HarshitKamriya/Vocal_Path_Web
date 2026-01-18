@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const connectDB = require("./config/db");
 const healthRoutes = require("./routes/healthRoutes");
+const sessionRoutes = require("./routes/sessionRoutes");
+
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 connectDB();
 
 app.use("/api", healthRoutes);
+app.use("/api", sessionRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
